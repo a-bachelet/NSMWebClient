@@ -1,6 +1,7 @@
 // Angular Imports
 import { Injectable } from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 // Services Imports
 import { AuthService } from './auth.service';
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private as: AuthService) { }
+  constructor(private router: Router) { }
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = AuthService.isAuthenticated() ?
@@ -22,7 +23,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401 || err.status === 403) {
-            alert('Unauthorized !');
+            this.router.navigate(['/login']);
           } else if (err.status === 404) {
             alert('Not Found !');
           } else if (err.status === 500) {
