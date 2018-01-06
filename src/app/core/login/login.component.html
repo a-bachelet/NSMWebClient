@@ -1,5 +1,11 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <input type="text" [formControl]="emailControl" placeholder="Email">
-  <input type="password" [formControl]="passwordControl" placeholder="Password">
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
+<div class="content flex-container" fxLayout="row" fxLayoutAlign="center center">
+  <form class="login-form flex-item flex-container" fxLayout="column" fxLayoutAlign="space-between" [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-input-container>
+      <input matInput type="text" [formControl]="emailControl" placeholder="Email">
+    </mat-input-container>
+    <mat-input-container>
+      <input matInput type="password" [formControl]="passwordControl" placeholder="Password">
+    </mat-input-container>
+    <button mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>
