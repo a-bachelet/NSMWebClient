@@ -47,7 +47,9 @@ export class AbstractRestEntityService<T extends AbstractRestEntity> {
 
   private getNewEntity(object?: Object): T {
     if (object) {
-      return new this.ctor(object);
+      const entity = new this.ctor();
+      entity.hydrate(object);
+      return entity;
     } else {
       return new this.ctor();
     }
