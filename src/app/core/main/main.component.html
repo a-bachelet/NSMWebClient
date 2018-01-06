@@ -1,4 +1,44 @@
-<p>
-  main works!
-</p>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+
+  <!-- Sidenav Button -->
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Website Title -->
+  &nbsp;
+  <span>NodeServerMonitor - Intranet</span>
+
+  <!-- Spacer -->
+  <span class="navbar-spacer"></span>
+
+  <!-- User Button -->
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+    {{ user.firstName[0] | uppercase }}. {{ user.lastName }}
+  </button>
+  &nbsp;
+  <span>
+  </span>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard"><mat-icon>dashboard</mat-icon></a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>power_settings_new</mat-icon> Logout
+  </button>
+</mat-menu>
