@@ -1,3 +1,57 @@
-<p>
-  dashboard works!
-</p>
+<div class="module-header">
+  <h1>Dashboard</h1>
+</div>
+<div
+  class="content flex-container"
+  fxLayout="row"
+  fxLayout.md="column"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-around"
+  fxLayoutGap="20px"
+  fxLayoutWrap
+>
+
+  <mat-card class="common flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>
+      <mat-icon>info</mat-icon> &nbsp; Common Informations :
+    </mat-card-title>
+    <mat-card-content *ngIf="common; else spinning">
+
+      <mat-card-subtitle>Hostname :</mat-card-subtitle>
+      <mat-card-content>{{ common.hostname }}</mat-card-content>
+
+      <mat-card-subtitle>Uptime :</mat-card-subtitle>
+      <mat-card-content>{{ common.uptime.days }} Days, {{ common.uptime.hours }} Hours, {{ common.uptime.minutes }} Minutes and {{ common.uptime.seconds }} Seconds</mat-card-content>
+
+      <mat-card-subtitle>OS Type :</mat-card-subtitle>
+      <mat-card-content>{{ common.type }}</mat-card-content>
+
+      <mat-card-subtitle>OS Platform :</mat-card-subtitle>
+      <mat-card-content>{{ common.platform }}</mat-card-content>
+
+      <mat-card-subtitle>OS Architecture :</mat-card-subtitle>
+      <mat-card-content>{{ common.arch }}</mat-card-content>
+
+      <mat-card-subtitle>OS Realease :</mat-card-subtitle>
+      <mat-card-content>{{ common.release }}</mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="memory flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>
+      <mat-icon>memory</mat-icon> &nbsp; Memory :
+    </mat-card-title>
+  </mat-card>
+  <mat-card class="cpu flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>
+      <mat-icon>select_all</mat-icon> &nbsp; Cpus :
+    </mat-card-title>
+  </mat-card>
+
+</div>
+
+<ng-template #spinning>
+  <mat-progress-spinner class="spinner" color="accent" mode="indeterminate" [diameter]="40" [strokeWidth]="3">
+  </mat-progress-spinner>
+</ng-template>
