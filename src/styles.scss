@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+// Angular Material Theming
+@import './theme';
+
+// Global Styling
+* { box-sizing: border-box; }
+html,body { width: 100%; height: 100%; padding: 0; margin: 0; }
