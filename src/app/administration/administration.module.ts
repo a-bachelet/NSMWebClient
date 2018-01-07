@@ -8,6 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 
 // Components Imports
 import { AdministrationComponent } from './administration.component';
+import { RolesListComponent } from './roles-list/roles-list.component';
+import { RolesDetailComponent } from './roles-detail/roles-detail.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UsersDetailComponent } from './users-detail/users-detail.component';
 
 @NgModule({
   imports: [
@@ -18,7 +22,11 @@ import { AdministrationComponent } from './administration.component';
 
   ],
   declarations: [
-    AdministrationComponent
+    AdministrationComponent,
+    RolesListComponent,
+    RolesDetailComponent,
+    UsersListComponent,
+    UsersDetailComponent
   ],
   providers: [
 

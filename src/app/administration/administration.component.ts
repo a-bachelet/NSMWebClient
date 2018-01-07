@@ -1,3 +1,4 @@
+// Angular Imports
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./administration.component.scss']
 })
 export class AdministrationComponent implements OnInit {
+
+  public navLinks: {label: string, path: string}[] = [
+    { label: 'Roles', path: 'roles' },
+    { label: 'Users', path: 'users' }
+  ];
 
   constructor() { }
 
