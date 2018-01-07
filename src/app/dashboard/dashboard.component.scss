@@ -1,0 +1,27 @@
+@import '../../theme.scss';
+
+div.module-header {
+  background-color: mat-color($app-primary, 700);
+
+  h1 {
+    margin: 0;
+    padding: 1rem;
+    padding-left: 4rem;
+    font-size: x-large;
+    font-weight: normal;
+    color: mat-color($app-primary, default-contrast);
+  }
+}
+
+
+.content {
+  padding: 50px;
+}
+
+.spinner {
+  margin: 0 auto;
+}
+
+.flex-item {
+  margin-bottom: 20px;
+}
