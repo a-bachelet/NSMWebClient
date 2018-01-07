@@ -19,4 +19,16 @@ export class SystemService {
     return this.http.get<any>(`${ environment.apiEndpoint }/system/common`);
   }
 
+  public getCpus(): Observable<any> {
+    return this.http.get<any>(`${ environment.apiEndpoint }/system/cpus`);
+  }
+
+  public getDisks(): Observable<any> {
+    return this.http.get<any>(`${ environment.apiEndpoint }/system/disks`);
+  }
+
+  public getNetworks(): Observable<any> {
+    return this.http.get<any>(`${ environment.apiEndpoint }/system/networks`);
+  }
+
 }
