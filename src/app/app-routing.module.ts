@@ -12,6 +12,7 @@ import { MainComponent } from './core/main/main.component';
 const routes: Routes = [
   { path: '', resolve: { user: AuthResolverService }, component: MainComponent, children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'administration', loadChildren: './administration/administration.module#AdministrationModule' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' }
     ] },
   { path: 'login', component: LoginComponent }
