@@ -8,12 +8,12 @@
   fxLayout.md="row"
   fxLayout.sm="column"
   fxLayout.xs="column"
-  fxLayoutAlign="space-around"
+  fxLayoutAlign="space-between"
   fxLayoutGap="20px"
   fxLayoutWrap=""
 >
 
-  <mat-card class="common flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <mat-card class="common flex-item" fxFlex="46" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>
       <mat-icon>info</mat-icon> &nbsp; Common Informations :
     </mat-card-title>
@@ -39,7 +39,7 @@
 
     </mat-card-content>
   </mat-card>
-  <mat-card class="memory flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <mat-card class="memory flex-item" fxFlex="46" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>
       <mat-icon>memory</mat-icon> &nbsp; Memory :
     </mat-card-title>
@@ -51,7 +51,7 @@
     <mat-card-subtitle>Free Memory :</mat-card-subtitle>
     <mat-card-content>{{ memory.freeMem }} GB</mat-card-content>
   </mat-card>
-  <mat-card class="cpu flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <mat-card class="cpu flex-item" fxFlex="46" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>
       <mat-icon>select_all</mat-icon> &nbsp; Cpu :
     </mat-card-title>
@@ -63,7 +63,7 @@
     <mat-card-subtitle>Cpu Logical Process Units :</mat-card-subtitle>
     <mat-card-content *ngIf="cpus">{{ cpus.length }}</mat-card-content>
   </mat-card>
-  <mat-card class="disks flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <mat-card class="disks flex-item" fxFlex="46" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>
       <mat-icon>dns</mat-icon> &nbsp; Disks :
     </mat-card-title>
@@ -74,7 +74,7 @@
       Total Size : {{ disk.size }} GB
     </mat-card-content>
   </mat-card>
-  <mat-card class="networks flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="networks">
+  <mat-card class="networks flex-item" fxFlex="46" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="networks">
     <mat-card-title><mat-icon>settings_ethernet</mat-icon> &nbsp; Networks :</mat-card-title>
     <mat-card-content *ngFor="let network of networks.Ethernet">
       <mat-card-subtitle *ngIf="network.family === 'IPv4'">Address :</mat-card-subtitle>

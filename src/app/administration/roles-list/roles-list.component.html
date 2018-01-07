@@ -1,3 +1,34 @@
-<p>
-  roles-list works!
-</p>
+<mat-table #table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0; else spinning">
+
+  <ng-container matColumnDef="_id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element._id }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createdAt">
+    <mat-header-cell *matHeaderCellDef> Created At </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.createdAt | date:'dd/MM/yyyy' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button routerLink="{{ element._id }}">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<ng-template #spinning>
+  <mat-progress-spinner class="spinner" color="primary" mode="indeterminate" [diameter]="40" [strokeWidth]="3">
+  </mat-progress-spinner>
+</ng-template>
