@@ -3,13 +3,14 @@
 </div>
 <div
   class="content flex-container"
-  fxLayout="row"
-  fxLayout.md="column"
+  fxLayout.xl="row"
+  fxLayout.lg="row"
+  fxLayout.md="row"
   fxLayout.sm="column"
   fxLayout.xs="column"
   fxLayoutAlign="space-around"
   fxLayoutGap="20px"
-  fxLayoutWrap
+  fxLayoutWrap=""
 >
 
   <mat-card class="common flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
@@ -42,11 +43,49 @@
     <mat-card-title>
       <mat-icon>memory</mat-icon> &nbsp; Memory :
     </mat-card-title>
+    <canvas id="memoryChart"></canvas>
+    <mat-card-subtitle>Total Memory :</mat-card-subtitle>
+    <mat-card-content>{{ memory.totalMem }} GB</mat-card-content>
+    <mat-card-subtitle>Used Memory :</mat-card-subtitle>
+    <mat-card-content>{{ memory.usedMem }} GB</mat-card-content>
+    <mat-card-subtitle>Free Memory :</mat-card-subtitle>
+    <mat-card-content>{{ memory.freeMem }} GB</mat-card-content>
   </mat-card>
   <mat-card class="cpu flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>
-      <mat-icon>select_all</mat-icon> &nbsp; Cpus :
+      <mat-icon>select_all</mat-icon> &nbsp; Cpu :
     </mat-card-title>
+    <canvas id="cpuChart"></canvas>
+    <mat-card-subtitle>Cpu Model :</mat-card-subtitle>
+    <mat-card-content *ngIf="cpus">{{ cpus[0].model }}</mat-card-content>
+    <mat-card-subtitle>Cpu Speed :</mat-card-subtitle>
+    <mat-card-content *ngIf="cpus">{{ cpus[0].speed / 1000 }} GHz</mat-card-content>
+    <mat-card-subtitle>Cpu Logical Process Units :</mat-card-subtitle>
+    <mat-card-content *ngIf="cpus">{{ cpus.length }}</mat-card-content>
+  </mat-card>
+  <mat-card class="disks flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>
+      <mat-icon>dns</mat-icon> &nbsp; Disks :
+    </mat-card-title>
+    <mat-card-content *ngFor="let disk of disks">
+      <mat-card-subtitle>{{ disk.mountpoints[0].path }}</mat-card-subtitle>
+      Description : {{ disk.description }}
+      <br/>
+      Total Size : {{ disk.size }} GB
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="networks flex-item" fxFlex="31" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="networks">
+    <mat-card-title><mat-icon>settings_ethernet</mat-icon> &nbsp; Networks :</mat-card-title>
+    <mat-card-content *ngFor="let network of networks.Ethernet">
+      <mat-card-subtitle *ngIf="network.family === 'IPv4'">Address :</mat-card-subtitle>
+      <mat-card-content *ngIf="network.family === 'IPv4'">{{ network.address }}</mat-card-content>
+      <mat-card-subtitle *ngIf="network.family === 'IPv4'">Netmask :</mat-card-subtitle>
+      <mat-card-content *ngIf="network.family === 'IPv4'">{{ network.netmask }}</mat-card-content>
+      <mat-card-subtitle *ngIf="network.family === 'IPv4'">Mac Address :</mat-card-subtitle>
+      <mat-card-content *ngIf="network.family === 'IPv4'">{{ network.mac }}</mat-card-content>
+      <mat-card-subtitle *ngIf="network.family === 'IPv4'">CIDR :</mat-card-subtitle>
+      <mat-card-content *ngIf="network.family === 'IPv4'">{{ network.cidr }}</mat-card-content>
+    </mat-card-content>
   </mat-card>
 
 </div>
