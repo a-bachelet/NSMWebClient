@@ -21,6 +21,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class RolesListComponent implements OnDestroy, OnInit {
 
   private rolesSubscription = new Subscription();
+  private removeSubscription: Subscription = new Subscription();
 
   public dataSource: MatTableDataSource<Role> = new MatTableDataSource<Role>();
   public displayedColumns: string[] = [ '_id', 'name', 'createdAt', 'actions' ];
@@ -29,10 +30,20 @@ export class RolesListComponent implements OnDestroy, OnInit {
 
   ngOnDestroy() {
     this.rolesSubscription.unsubscribe();
+    this.removeSubscription.unsubscribe();
   }
 
   ngOnInit() {
     this.rolesSubscription = this.rs.getAll().subscribe(res => { this.dataSource = new MatTableDataSource<Role>(res); });
+  }
+
+  public remove(id: string): void {
+    const role: Role = new Role();
+    role._id = id;
+    this.removeSubscription = this.rs.remove(role).subscribe(res => {
+      this.dataSource.data = this.dataSource.data.filter(obj => obj._id !== role._id);
+    } );
+
   }
 
 }

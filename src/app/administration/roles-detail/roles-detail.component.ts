@@ -1,7 +1,7 @@
 // Angular Imports
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Entities Imports
 import { Role } from '../../shared/entities/role/role';
@@ -29,7 +29,7 @@ export class RolesDetailComponent implements OnDestroy, OnInit {
   public nameControl: FormControl = null;
   public createdAtControl: FormControl = null;
 
-  constructor(private ar: ActivatedRoute, private rs: RoleService) { }
+  constructor(private ar: ActivatedRoute, private rs: RoleService, private ro: Router) { }
 
   ngOnDestroy() {
     this.roleSubscription.unsubscribe();
@@ -47,6 +47,7 @@ export class RolesDetailComponent implements OnDestroy, OnInit {
     this.idControl = new FormControl(this.role._id);
     this.idControl.disable();
     this.nameControl = new FormControl(this.role.name, [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255)
     ]);
@@ -81,6 +82,7 @@ export class RolesDetailComponent implements OnDestroy, OnInit {
         res => {
           this.role.hydrate(res);
           this.initForm();
+          this.ro.navigate(['/administration/roles']);
         }
       );
     }

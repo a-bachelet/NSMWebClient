@@ -21,6 +21,9 @@
       <button mat-icon-button routerLink="{{ element._id }}">
         <mat-icon>search</mat-icon>
       </button>
+      <button mat-icon-button (click)="remove(element._id)">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
     </mat-cell>
   </ng-container>
 
@@ -28,7 +31,7 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<button mat-raised-button color="accent" style="margin-top: 20px;">Add</button>
+<button mat-raised-button color="accent" style="margin-top: 20px;" routerLink="create">Add</button>
 
 <ng-template #spinning>
   <mat-progress-spinner class="spinner" color="primary" mode="indeterminate" [diameter]="40" [strokeWidth]="3">

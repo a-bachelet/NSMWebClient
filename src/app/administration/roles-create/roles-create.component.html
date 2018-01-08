@@ -1,0 +1,6 @@
+<form [formGroup]="roleGroup" class="flex-container roleGroup" fxLayout="column" fxLayoutAlign="center center">
+  <mat-input-container class="roleControl">
+    <input placeholder="NAME" type="text" matInput [formControl]="nameControl"/>
+  </mat-input-container>
+  <button (click)="create()" [disabled]="!roleGroup.valid" mat-raised-button color="accent">Add</button>
+</form>
