@@ -13,6 +13,7 @@ import { RolesDetailComponent } from './roles-detail/roles-detail.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersDetailComponent } from './users-detail/users-detail.component';
 import { RolesCreateComponent } from './roles-create/roles-create.component';
+import { UsersCreateComponent } from './users-create/users-create.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { RolesCreateComponent } from './roles-create/roles-create.component';
     RolesDetailComponent,
     UsersListComponent,
     UsersDetailComponent,
-    RolesCreateComponent
+    RolesCreateComponent,
+    UsersCreateComponent
   ],
   providers: [
 

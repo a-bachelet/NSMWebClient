@@ -16,7 +16,13 @@ export class User extends AbstractRestEntity {
   private _validUntil: Date = null;
 
   public set role(role: Role) {
-    this._role = role ? new Role(role) : null;
+    if (role) {
+      this._role = new Role();
+      this._role.hydrate(role);
+    } else {
+      this._role = null;
+    }
+
   }
   public get role(): Role {
     return this._role;

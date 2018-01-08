@@ -10,8 +10,14 @@ export abstract class AbstractRestEntity {
     Object.assign(this, obj);
   }
 
-  public toSendRest(): this {
-    return this;
+  public toSendRest(): any {
+    const res: any = {};
+    for (const obj in this) {
+      if (typeof(this[obj]) !== 'function') {
+        res[obj] = this[obj];
+      }
+    }
+    return res;
   }
 
 }

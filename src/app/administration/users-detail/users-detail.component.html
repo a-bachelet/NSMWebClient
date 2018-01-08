@@ -1,3 +1,34 @@
-<p>
-  users-detail works!
-</p>
+<form class="userGroup flex-container" fxLayout="column" fxLayoutAlign="center center" style="width: 100%;" [formGroup]="userGroup" *ngIf="userGroup">
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <input placeholder="ID" type="text" matInput [formControl]="idControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <input placeholder="FIRST NAME" type="text" matInput [formControl]="firstNameControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <input placeholder="LAST NAME" type="text" matInput [formControl]="lastNameControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <input placeholder="EMAIL" type="text" matInput [formControl]="emailControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <mat-select placeholder="ROLE" [formControl]="roleControl">
+      <mat-option *ngFor="let role of roles" [value]="role">{{ role.name }}</mat-option>
+    </mat-select>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item userControl" fxFlex="100">
+    <input placeholder="CREATED AT" type="text" matInput [formControl]="createdAtControl"/>
+  </mat-input-container>
+
+  <div class="flex-item flex-container buttons" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="40px" fxFlex="100">
+    <button mat-raised-button color="warn" (click)="edit()" [disabled]="!isModified() || userGroup.invalid">Edit</button>
+    <button mat-raised-button color="accent" (click)="revert()" [disabled]="!isModified() || userGroup.invalid">Revert</button>
+  </div>
+
+</form>
