@@ -1,3 +1,20 @@
-<p>
-  roles-detail works!
-</p>
+<form class="roleGroup flex-container" fxLayout="column" fxLayoutAlign="center center" style="width: 100%;" [formGroup]="roleGroup" *ngIf="roleGroup">
+
+  <mat-input-container class="flex-item roleControl" fxFlex="100">
+    <input placeholder="ID" type="text" matInput [formControl]="idControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item roleControl" fxFlex="100">
+    <input placeholder="NAME" type="text" matInput [formControl]="nameControl"/>
+  </mat-input-container>
+
+  <mat-input-container class="flex-item roleControl" fxFlex="100">
+    <input placeholder="CREATED AT" type="text" matInput [formControl]="createdAtControl"/>
+  </mat-input-container>
+
+  <div class="flex-item flex-container buttons" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="40px" fxFlex="100">
+    <button mat-raised-button color="warn" (click)="edit()" [disabled]="!isModified() || roleGroup.invalid">Edit</button>
+    <button mat-raised-button color="accent" (click)="revert()" [disabled]="!isModified() || roleGroup.invalid">Revert</button>
+  </div>
+
+</form>

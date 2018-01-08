@@ -33,6 +33,8 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
+<button mat-raised-button color="accent" style="margin-top: 20px;">Add</button>
+
 <ng-template #spinning>
   <mat-progress-spinner class="spinner" color="primary" mode="indeterminate" [diameter]="40" [strokeWidth]="3">
   </mat-progress-spinner>
